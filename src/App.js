@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { Navbar } from 'flowbite-react';
+import LandingPage from './pages/LandingPage';
+import Cart from './pages/Cart';
+import CheckOut from './pages/CheckOut';
+import ProductDetail from './pages/ProductDetail';
+import ProductListing from './pages/ProductListing';
+import Wishlist from './pages/Wishlist';
+import OrderHistory from './pages/OrderHistory';
+import FooterComp from './components/FooterComp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<CheckOut />} />
+          <Route path='/product-detail' element={<ProductDetail />} />
+          <Route path='/product-list' element={<ProductListing />} />
+          <Route path='/wishlist' element={<Wishlist />} />
+          <Route path='/order-history' element={<OrderHistory />} />
+          <Route path='*' element={<LandingPage />} />
+        </Routes>
+        <FooterComp />
+      </BrowserRouter>
+    </>
   );
 }
 
