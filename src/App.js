@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage';
-import Cart from './pages/Cart';
 import CheckOut from './pages/CheckOut';
 import ProductDetail from './pages/ProductDetail';
 import ProductListing from './pages/ProductListing';
@@ -9,6 +8,7 @@ import Wishlist from './pages/Wishlist';
 import OrderHistory from './pages/OrderHistory';
 import FooterComp from './components/FooterComp';
 import NavbarComp from './components/NavbarComp';
+import Cart from './cart/Cart';
 
 function App() {
   return (

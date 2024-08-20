@@ -4,11 +4,20 @@ import { motion } from "framer-motion";
 import { Button } from "flowbite-react";
 import axios from "axios";
 import CustomerReview from "../components/CustomerReview";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cart/cartSlice";
+import Cart from "../cart/Cart";
 
 const ProductDetail = () => {
+    const dispatch = useDispatch();
+
     const id = useLocation().pathname.split("/").slice(-1)[0];  // Getting the product ID from the URL
     const [product, setProduct] = useState(null);
 
+    const handleOnClick = () => {
+        console.log('product: ', product)
+        dispatch(addToCart(product));
+    };
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -29,10 +38,10 @@ const ProductDetail = () => {
     }
 
     return (
-        <section className="py-16">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {/* Product Image */}
+        <section className="flex flex-col md:flex-row py-16">
+
+            <div className="container mx-auto px-6 w-3/4">
+                <div className="flex flex-col md:flex-row gap-12">
                     <motion.img
                         src={product.thumbnail}
                         alt={product.title}
@@ -77,23 +86,25 @@ const ProductDetail = () => {
                                 <li>Rating: {product.rating} (based on {product.reviews?.length || 0} reviews)</li>
                             </ul>
                         </motion.div>
-                        <motion.div
-                            className="flex items-center space-x-4"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                        >
+
+                        <div className="flex items-center space-x-4" >
                             <span className="text-2xl font-bold">{`$${product.price}`}</span>
-                            <Button gradientMonochrome="lime" outline size="lg">
-                                Buy Now
+                            <Button onClick={handleOnClick} gradientMonochrome="lime" outline size="lg">
+                                Add to Cart
                             </Button>
-                        </motion.div>
+                        </div>
+
                     </div>
+
                 </div>
 
                 <CustomerReview reviews={product.reviews} />
             </div>
+
+            <div className=" w-1/4 hidden md:inline  border-l-lime-300 border-l-2 rounded">
+                <Cart/>
+            </div>
+
         </section>
     );
 };

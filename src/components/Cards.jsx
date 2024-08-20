@@ -1,8 +1,8 @@
 import { Button, Card } from 'flowbite-react'
 import React from 'react'
-import RatingStar from './RatingStar'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { BsArrowRight } from 'react-icons/bs'
 
 const Cards = ({ product }) => {
     return (
@@ -20,8 +20,11 @@ const Cards = ({ product }) => {
                         <p className="text-lg mb-4">{`$${product.price}`}</p>
                         <p className="text-sm mb-4">Rating: {product.rating}</p>
                         <Link to={`/product-detail/${product.id}`}>
-                            <Button gradientMonochrome="lime" outline size="lg">
-                                View Details
+                            <Button gradientMonochrome="lime" outline size="lg" fullWidth>
+                                <span className="flex items-center gap-3">
+                                    Check Out
+                                    <BsArrowRight size={20} />
+                                </span>
                             </Button>
                         </Link>
                     </Card>
