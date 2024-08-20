@@ -46,7 +46,7 @@ export default function NavbarComp() {
 
                 <span
                     className="self-center whitespace-nowrap font-semibold
-                        bg-gradient-to-r from-amber-600 via-red-400 to-yellow-400 px-1
+                        bg-gradient-to-r from-yellow-400 via-lime-300 to-yellow-600 px-1
                     rounded-lg text-transparent bg-clip-text text-3xl">
                     Xepido</span>
 

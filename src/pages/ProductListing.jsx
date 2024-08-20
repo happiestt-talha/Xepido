@@ -6,8 +6,9 @@ const ProductListing = () => {
     const [products, setProducts] = useState([])
 
     const getData = async () => {
-        const res = await axios.get('https://fakestoreapi.com/products')
-        setProducts(res.data)
+        const res = await axios.get('https://dummyjson.com/products')
+        console.log('data: ', res.data)
+        setProducts(res.data.products)
     }
     useEffect(() => {
         getData()
