@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Avatar, Rating } from "flowbite-react";
-import { format } from "date-fns"; // To format the date
+import moment from "moment";
 
 const CustomerReview = ({ reviews }) => {
     if (!reviews || reviews.length === 0) {
@@ -42,7 +42,8 @@ const CustomerReview = ({ reviews }) => {
                                     {review.reviewerName}
                                 </h4>
                                 <p className="text-sm text-gray-500">
-                                    {format(new Date(review.date), "MMMM dd, yyyy")}
+                                    {review.location}
+                                    {moment(review.date).format("MMM Do YY")}
                                 </p>
                                 <Rating>
                                     <Rating.Star filled={review.rating >= 1} />

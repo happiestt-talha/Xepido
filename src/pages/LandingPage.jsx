@@ -3,7 +3,6 @@ import React from "react";
 import { Button, Card, Carousel } from "flowbite-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import CustomerReview from "../components/CustomerReview";
 
 const LandingPage = () => {
