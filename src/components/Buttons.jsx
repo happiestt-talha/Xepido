@@ -1,8 +1,11 @@
+import { Button } from 'flowbite-react'
 import React from 'react'
 
-const Buttons = () => {
+const Buttons = ({type,childern,onClick,outline}) => {
     return (
-        <div>Buttons</div>
+        <Button gradientMonochrome={type} outline={outline} onClick={onClick}>
+            {childern}
+        </Button>
     )
 }
 

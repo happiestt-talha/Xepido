@@ -1,25 +1,27 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Xepido",
+  "name": "Xepido - Your cart, your world",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon-96.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#001427",
+  "background_color": "#006D77",
+  "description": "Experience effortless shopping with Xepido. Discover a world of products, curated just for you, and enjoy a seamless, delightful shopping experience from cart to checkout.",
+  "orientation": "any"
 }
