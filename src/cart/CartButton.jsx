@@ -3,7 +3,7 @@ import { FaCartPlus } from "react-icons/fa";
 import { BsCartCheckFill } from "react-icons/bs";
 import { Button } from "flowbite-react";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../store/cart/cartSlice";
+import { addToCart } from "../store/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const CartButton = ({ product }) => {
@@ -38,14 +38,14 @@ const CartButton = ({ product }) => {
                 onClick={handleAddToCart}
             >
                 <FaCartPlus size={30} />
-                <span className="ml-2">Add to cart</span>
+                <span className="ml-2 hidden md:inline">Add to cart</span>
             </span>
             <span
                 className={`flex items-center gap-3 transition-transform duration-300 absolute ${inCart ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}
                 onClick={handleRemoveFromCart}
             >
                 <BsCartCheckFill size={30} />
-                <span className="ml-2">Go to cart</span>
+                <span className="ml-2 hidden md:inline">Go to cart</span>
             </span>
         </Button>
     );

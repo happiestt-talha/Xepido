@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsCartXFill, BsTrash } from 'react-icons/bs'
+import { BsCartXFill } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../store/cart/cartSlice'
 import { Link } from 'react-router-dom'

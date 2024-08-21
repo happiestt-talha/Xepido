@@ -9,15 +9,20 @@ import OrderHistory from './pages/OrderHistory';
 import FooterComp from './components/FooterComp';
 import NavbarComp from './components/NavbarComp';
 import Cart from './cart/Cart';
+import Signin from './auth/Signin';
+import PrivateRoutes from './security/PrivateRoutes';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <NavbarComp/>
+        <NavbarComp />
         <Routes>
           <Route path='/' element={<LandingPage />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/sign-in' element={<Signin />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/cart' element={<Cart />} />
+          </Route>
           <Route path='/checkout' element={<CheckOut />} />
           <Route path='/product-detail/:productId' element={<ProductDetail />} />
           <Route path='/product-list' element={<ProductListing />} />
