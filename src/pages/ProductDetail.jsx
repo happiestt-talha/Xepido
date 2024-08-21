@@ -9,13 +9,14 @@ import ProductImages from "../components/ProductImages";
 import { TextInput } from "flowbite-react";
 import { useDispatch } from "react-redux";
 import { updateQuantity } from "../store/cart/cartSlice";
+import QuantityButton from "../components/QuantityButton";
 
 const ProductDetail = () => {
     const id = useLocation().pathname.split("/").slice(-1)[0];
     const dispatch = useDispatch();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [quantity, setQuantity] = useState(1);
+    const [productQuantity, setProductQuantity] = useState(1);
 
 
     useEffect(() => {
@@ -33,9 +34,10 @@ const ProductDetail = () => {
     }, [id]);
 
 
-    const handleQuantityChange = (e) => {
-        setQuantity(Number(e.target.value));
-        dispatch(updateQuantity({ id, quantity }));
+    const handleQuantityChange = (quantity) => {
+        setProductQuantity(quantity);
+        dispatch(updateQuantity({ id: product.id, quantity }));
+        console.log("Quantity updated to:", quantity);
     };
 
     return (
@@ -46,29 +48,24 @@ const ProductDetail = () => {
                 <>
                     <section className="flex flex-col md:flex-row py-16">
                         <div className="container mx-auto px-6 ">
-                            <div className="flex flex-col md:flex-row gap-12">
-                                <img src={product.thumbnail} alt="" />
-                                {/* <ProductImages images={product.images} thumbnail={product.thumbnail} /> */}
-                                <div className="overflow-hidden">
+                            <div className="flex flex-col md:flex-row gap-8">
+                                <div className="w-full md:w-1/2">
+                                    <ProductImages images={product.images} thumbnail={product.thumbnail} />
+                                </div>
+                                <div className="overflow-hidden flex flex-col w-full md:w-1/2">
                                     <ProductInfo product={product} />
+                                    <div className="flex items-center space-x-4 mt-6 w-full">
+                                        <span className="flex flex-col justify-center items-center">
+                                            <span className="text-2xl font-bold">{`$${product.price}`}</span>
+                                            {/* <QuantitySelector quantity={quantity} onQuantityChange={handleQuantityChange} /> */}
+                                            <QuantityButton id={product.id} onQuantityChange={handleQuantityChange}/>
+                                        </span>
+                                        <CartButton product={{ ...product, quantity: productQuantity }} />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center space-x-4 mt-6">
-                                <span className="flex flex-col justify-center">
-                                    <span className="text-2xl font-bold">{`$${product.price}`}</span>
-                                    {/* <QuantitySelector quantity={quantity} onQuantityChange={handleQuantityChange} /> */}
-                                    <TextInput
-                                        type="number"
-                                        placeholder="Quantity"
-                                        value={quantity}
-                                        min="1"
-                                        onChange={handleQuantityChange}
-                                        className="w-full text-center border border-gray-300 rounded"
-                                    />
-                                </span>
-                                <CartButton product={{ ...product, quantity }} />
-                            </div>
+
 
                             <CustomerReview reviews={product.reviews} />
                         </div>

@@ -1,21 +1,56 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Carousel } from "flowbite-react";
 
 const ProductImages = ({ images, thumbnail }) => {
+    console.log('images: ', images);
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-        >
-            <img src={thumbnail} alt="Product Thumbnail" className="rounded-lg drop-shadow-2xl mb-4" />
-            <div className="grid grid-cols-3 gap-4">
-                {images.map((img, index) => (
-                    <img key={index} src={img} alt={`Product: ${index}`} className="rounded-lg drop-shadow-2xl" />
-                ))}
+        <div className="product-images-container">
+            {/* Thumbnail */}
+            <div className="thumbnail-container mb-6">
+                <motion.img
+                    src={thumbnail}
+                    alt="Product Thumbnail"
+                    className="rounded-lg drop-shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                />
             </div>
-        </motion.div>
+
+            <p className="text-lg font-semibold mb-4">Product Images</p>
+
+            {/* Product Images */}
+            <div className="product-images">
+                {images.length === 0 ? (
+                    <div className="text-gray-500">No images available</div>
+                ) : images.length === 1 ? (
+                    <motion.img
+                        src={images[0]}
+                        alt="Product Image"
+                        className="rounded-lg drop-shadow-2xl mb-4"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                    />
+                ) : (
+                    <Carousel
+                        slideInterval={1500}
+                        className="w-full md:mx-auto h-screen"
+                    >
+                        {images.map((image, index) => (
+                            <motion.img
+                                key={index}
+                                src={image}
+                                alt={`Product Image ${index + 1}`}
+                                className="h-screen"
+                                style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
+                            />
+                        ))}
+                    </Carousel>
+                )}
+            </div>
+        </div>
     );
 };
 
