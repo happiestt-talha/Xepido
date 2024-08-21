@@ -9,6 +9,7 @@ import OrderHistory from './pages/OrderHistory';
 import FooterComp from './components/FooterComp';
 import NavbarComp from './components/NavbarComp';
 import Cart from './cart/Cart';
+import CartTotal from './cart/CartTotal';
 import Signin from './auth/Signin';
 import PrivateRoutes from './security/PrivateRoutes';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/sign-in' element={<Signin />} />
           <Route element={<PrivateRoutes />}>
             <Route path='/cart' element={<Cart />} />
+            <Route path='/cart-total' element={<CartTotal />} />
           </Route>
           <Route path='/checkout' element={<CheckOut />} />
           <Route path='/product-detail/:productId' element={<ProductDetail />} />

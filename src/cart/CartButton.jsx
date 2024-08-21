@@ -20,7 +20,7 @@ const CartButton = ({ product }) => {
         navigate("/cart");
         // dispatch(removeFromCart(product.id));
     };
-    
+
     const handleOnClick = () => {
         setInCart(true);
     };
