@@ -19,7 +19,7 @@ const LandingPage = () => {
                         Discover exclusive products with amazing offers
                     </motion.p>
                     <Link to="/product-list">
-                        <Button gradientMonochrome="lime" outline size="lg" className="z-10">
+                        <Button gradientMonochrome="lime" outline size="lg" className="z-10 bg-transparent ">
                             Shop Now
                         </Button>
                     </Link>
