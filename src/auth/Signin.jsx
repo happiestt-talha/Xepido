@@ -27,7 +27,7 @@ const Signin = () => {
         if (!input.username || !input.password || input.username === "" || input.password === "") return
         try {
             console.log('Signing in...')
-            console.log('input: ',input)
+            console.log('input: ', input)
             dispatch(loginStart())
             const res = await axios.post('https://dummyjson.com/auth/login', input)
             console.log(res.data)
@@ -49,7 +49,11 @@ const Signin = () => {
                 <div className='mt-10 flex p-3 max-w-4xl mx-auto flex-col md:flex-row md:items-center gap-5'>
 
                     <div className='flex-1 order-2 md:order-1'>
-
+                        <div>
+                            <h1 className='text-3xl font-bold'>Kindly use the following credentials</h1>
+                            <p>usename: emilys</p>
+                            <p>password: emilyspass</p>
+                        </div>
                         <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
                             <div>
                                 <Label value='Your Username' />
