@@ -90,7 +90,7 @@ const Reviews = () => {
         <>
             <Carousel
                 slideInterval={1500}
-                className="w-full md:w-1/2 md:mx-auto h-56"
+                className="w-full md:w-1/2 md:mx-auto h-56 bg-slate-200 dark:bg-gray-500 p-4 rounded-md"
             >
                 {reviews.map((review) => (
                     <ReviewItem key={review.id} review={review} />

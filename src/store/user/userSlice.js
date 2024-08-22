@@ -4,6 +4,7 @@ const initialState = {
     currentUser: null,
     loading: false,
     error: null,
+    isAdmin: false
 }
 export const userSlice = createSlice({
     name: 'user',
@@ -25,9 +26,12 @@ export const userSlice = createSlice({
         logout: (state) => {
             state.currentUser = null
         },
+        makeAdmin: (state) => {
+            state.isAdmin = true
+        }
     },
 })
 
-export const { loginStart, loginSuccess, loginFailure, logout } = userSlice.actions
+export const { loginStart, loginSuccess, loginFailure, logout, makeAdmin } = userSlice.actions
 
 export default userSlice.reducer

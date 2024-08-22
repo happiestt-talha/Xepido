@@ -3,13 +3,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { BsArrowRight } from 'react-icons/bs'
-
+import { FaHeartCirclePlus } from "react-icons/fa6";
+import { IoIosHeartDislike } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWishList, removeFromWishList } from '../store/wishListSlice'
 const Cards = ({ product }) => {
+    const dispatch = useDispatch()
+    const { currWishList } = useSelector((state) => state.wishList)
+    const isInWishlist = currWishList.some((item) => item.id === product.id)
     return (
         <>
             <Link to={`/product-detail/${product.id}`}>
                 <motion.div
-                    className="max-w-sm mx-auto"
+                    className="max-w-sm mx-auto relative"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
@@ -26,6 +32,11 @@ const Cards = ({ product }) => {
                             </span>
                         </Button>
                     </Card>
+                    <span className='absolute top-[-15px] right-[-15px] text-rose-700 hover:text-red-600' onClick={() => dispatch(isInWishlist ? removeFromWishList(product.id) : addToWishList(product))} >
+                        {
+                            isInWishlist ? <IoIosHeartDislike size={30} /> : <FaHeartCirclePlus size={30} />
+                        }
+                    </span>
                 </motion.div>
             </Link>
         </>

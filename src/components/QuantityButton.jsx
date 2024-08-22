@@ -4,7 +4,7 @@ const QuantityButton = ({ initialQuantity, onQuantityChange }) => {
     const [quantity, setQuantity] = useState(initialQuantity || 1);
 
     useEffect(() => {
-        // Ensure quantity is a number and at least 1
+        console.log('initialQuantity: ', initialQuantity);
         setQuantity(prevQuantity => Math.max(1, Number(prevQuantity) || 1));
     }, [initialQuantity]);
 

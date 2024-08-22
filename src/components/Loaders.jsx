@@ -1,12 +1,12 @@
 import React from 'react'
-import { PacmanLoader } from 'react-spinners'
+import { ScaleLoader } from 'react-spinners'
 
 const Loaders = () => {
     return (
         <>
             <div className='flex justify-center items-center h-screen'>
 
-                <PacmanLoader
+                <ScaleLoader
                     color="#aeee5f"
                     size={93}
                 />

@@ -12,6 +12,10 @@ import Cart from './cart/Cart';
 import CartTotal from './cart/CartTotal';
 import Signin from './auth/Signin';
 import PrivateRoutes from './security/PrivateRoutes';
+import AdminPage from './admin/AdminPage';
+import CreateStore from './admin/CreateStore';
+import UserDashboard from './admin/UserDashboard';
+
 
 function App() {
   return (
@@ -19,18 +23,22 @@ function App() {
       <BrowserRouter>
         <NavbarComp />
         <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/sign-in' element={<Signin />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/sign-in" element={<Signin />} />
           <Route element={<PrivateRoutes />}>
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/cart-total' element={<CartTotal />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart-total" element={<CartTotal />} />
+            <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/create-store" element={<CreateStore />} />
+            <Route path="/order-history" element={<OrderHistory />} />
           </Route>
-          <Route path='/checkout' element={<CheckOut />} />
-          <Route path='/product-detail/:productId' element={<ProductDetail />} />
-          <Route path='/product-list' element={<ProductListing />} />
-          <Route path='/wishlist' element={<Wishlist />} />
-          <Route path='/order-history' element={<OrderHistory />} />
-          <Route path='*' element={<LandingPage />} />
+          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/product-detail/:productId" element={<ProductDetail />} />
+          <Route path="/product-list" element={<ProductListing />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/order-history" element={<OrderHistory />} />
+          <Route path="*" element={<LandingPage />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>

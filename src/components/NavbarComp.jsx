@@ -1,10 +1,11 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon, FaShoppingCart, FaSun } from 'react-icons/fa';
+import { FaHistory, FaMoon, FaShoppingCart, FaSun } from 'react-icons/fa';
 import logo from '../assets/logo/logo.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../store/theme/themeSlice';
+import { logout } from '../store/user/userSlice';
 
 export default function NavbarComp() {
     const path = useLocation().pathname;
@@ -53,13 +54,13 @@ export default function NavbarComp() {
         "womens-watches"
     ]
     const { currentUser } = useSelector((state) => state.user)
-    const {cartItems} = useSelector(state => state.cart)
+    const { cartItems } = useSelector(state => state.cart)
     const { theme } = useSelector((state) => state.theme)
     const handleTheme = () => {
         dispatch(toggleTheme())
     }
     const handleSignOut = () => {
-
+        dispatch(logout())
     }
     return (
         <Navbar style={{ position: 'sticky', top: 0, zIndex: 106 }} className='border-b-2'>
@@ -76,7 +77,7 @@ export default function NavbarComp() {
                     className='font-bold text-xl hidden md:inline'
                 >Mart</span>
             </Link>
-            <form>
+            {/* <form>
                 <TextInput
                     type='text'
                     placeholder='Search...'
@@ -87,10 +88,10 @@ export default function NavbarComp() {
 
             <Button className='w-12 h-10 lg:hidden' color='gray' pill>
                 <AiOutlineSearch />
-            </Button>
-            
+            </Button> */}
+
             <Link to="/cart-total" className='relative'>
-                    <FaShoppingCart size={35}/>
+                <FaShoppingCart size={35} />
                 <span className='absolute top-[-8px] right-[-13px] text-lg bg-lime-500 text-black rounded-full w-6 h-6 flex items-center justify-center'>
                     {cartItems.length}
                 </span>
@@ -105,7 +106,7 @@ export default function NavbarComp() {
                         ? (
                             <Dropdown arrowIcon={false}
                                 inline
-                                label={<Avatar alt={currentUser.username + "'s avatar"} img={currentUser.profilePic} rounded />}
+                                label={<Avatar alt={currentUser.username + "'s avatar"} img={`https://dummyjson.com/icon/${currentUser.username}/128`} rounded />}
                             >
                                 <Dropdown.Header>
                                     <span className="block text-sm">  @{currentUser.username} </span>
@@ -146,6 +147,9 @@ export default function NavbarComp() {
                         </Navbar.Link>
                     ))
                 }
+                <Navbar.Link active={path === '/order-history'} as={Link} to='/order-history'>
+                    <FaHistory/> 
+                </Navbar.Link>
             </Navbar.Collapse>
 
         </Navbar >

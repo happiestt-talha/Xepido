@@ -17,7 +17,7 @@ const ProductImages = ({ images, thumbnail }) => {
                 />
             </div>
 
-            <p className="text-lg font-semibold mb-4">Product Images</p>
+            <p className="text-xl font-black text-center mb-4 text-lime-500">Product Images</p>
 
             {/* Product Images */}
             <div className="product-images">
@@ -35,7 +35,7 @@ const ProductImages = ({ images, thumbnail }) => {
                 ) : (
                     <Carousel
                         slideInterval={1500}
-                        className="w-full md:mx-auto h-screen"
+                        className="w-full md:mx-auto h-screen bg-slate-200 dark:bg-gray-500 rounded-lg mb-4"
                     >
                         {images.map((image, index) => (
                             <motion.img

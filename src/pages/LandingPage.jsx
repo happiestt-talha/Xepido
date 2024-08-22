@@ -4,13 +4,14 @@ import { Button, Card, Carousel } from "flowbite-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Reviews from "../reviews/Reviews";
+import bg from '../assets/images/bg.jpg'
 
 const LandingPage = () => {
     return (
         <>
             <section className="relative h-screen text-gray-800">
-                <div className="absolute z-40 inset-0 bg-gradient-to-r from-lime-400 to-yellow-200 opacity-60"></div>
-                <div className="absolute z-20 inset-0 h-full w-full bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')" }}></div>
+                <div className="absolute z-40 inset-0 bg-gradient-to-r from-lime-400 to-lime-600 opacity-60"></div>
+                <div className="absolute z-20 inset-0 h-full w-full bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}></div>
                 <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-50">
                     <motion.h1 className="text-6xl font-extrabold  mb-4 z-10" initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }}>
                         Welcome to Xepido
@@ -19,7 +20,7 @@ const LandingPage = () => {
                         Discover exclusive products with amazing offers
                     </motion.p>
                     <Link to="/product-list">
-                        <Button gradientMonochrome="lime" outline size="lg" className="z-10 bg-transparent ">
+                        <Button gradientMonochrome="lime" size="lg" className="z-10 bg-transparent shadow-2xl shadow-green-700">
                             Shop Now
                         </Button>
                     </Link>
@@ -54,7 +55,7 @@ const LandingPage = () => {
                     </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {["Fast Delivery", "Secure Payments", "24/7 Support"].map((feature, index) => (
-                            <motion.div key={feature} initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                            <motion.div className="bg-slate-300 dark:bg-gray-500 p-3 rounded" key={feature} initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                                 <h3 className="text-2xl font-bold mb-4">{feature}</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero id lorem malesuada placerat.</p>
                             </motion.div>

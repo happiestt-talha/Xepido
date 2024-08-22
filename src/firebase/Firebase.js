@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCANOZV7pHYhvoEKSXcoKGlUhWRFH9-L40",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "xepido.firebaseapp.com",
     projectId: "xepido",
     storageBucket: "xepido.appspot.com",

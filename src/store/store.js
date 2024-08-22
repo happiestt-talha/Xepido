@@ -5,6 +5,9 @@ import storage from 'redux-persist/lib/storage'
 import userReducer from "./user/userSlice";
 import themeReducer from "./theme/themeSlice";
 import cartReducer from "./cart/cartSlice";
+import storeReducers from "./store/storeSlice";
+import OrderReducer from "./orderSlice";
+import wishListReducer from "./wishListSlice";
 
 const persistConfig = {
     key: 'root',
@@ -15,6 +18,9 @@ const rootReducer = combineReducers({
     user: userReducer,
     theme: themeReducer,
     cart: cartReducer,
+    store: storeReducers,
+    orderHistory: OrderReducer,
+    wishList: wishListReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
