@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const QuantityButton = ({ initialQuantity, onQuantityChange }) => {
-    const [quantity, setQuantity] = React.useState(initialQuantity);
+    const [quantity, setQuantity] = useState(initialQuantity || 1);
+
+    useEffect(() => {
+        // Ensure quantity is a number and at least 1
+        setQuantity(prevQuantity => Math.max(1, Number(prevQuantity) || 1));
+    }, [initialQuantity]);
 
     const handleDecrement = () => {
-        if (quantity > 1) {
-            const newQuantity = quantity - 1;
-            setQuantity(newQuantity);
-            onQuantityChange(newQuantity);
-        }
+        const newQuantity = Math.max(1, quantity - 1);
+        setQuantity(newQuantity);
+        onQuantityChange(newQuantity);
     };
 
     const handleIncrement = () => {
