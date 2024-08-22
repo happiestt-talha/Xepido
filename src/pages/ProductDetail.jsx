@@ -23,7 +23,9 @@ const ProductDetail = () => {
         const fetchProduct = async () => {
             try {
                 const res = await axios.get(`https://dummyjson.com/products/${id}`);
-                setProduct(res.data);
+                const tempData = res.data;
+                tempData.quantity = 1;
+                setProduct(tempData);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching product data:", error);

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Carousel } from "flowbite-react";
 
 const ProductImages = ({ images, thumbnail }) => {
-    console.log('images: ', images);
     return (
         <div className="product-images-container">
             {/* Thumbnail */}

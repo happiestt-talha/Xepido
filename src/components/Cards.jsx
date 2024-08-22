@@ -19,14 +19,12 @@ const Cards = ({ product }) => {
                         <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
                         <p className="text-lg mb-4">{`$${product.price}`}</p>
                         <p className="text-sm mb-4">Rating: {product.rating}</p>
-                        <Link to={`/product-detail/${product.id}`}>
-                            <Button gradientMonochrome="lime" outline size="lg" fullWidth>
-                                <span className="flex items-center gap-3">
-                                    Check Out
-                                    <BsArrowRight size={20} />
-                                </span>
-                            </Button>
-                        </Link>
+                        <Button gradientMonochrome="lime" outline size="lg">
+                            <span className="flex items-center gap-3">
+                                Check Out
+                                <BsArrowRight size={20} />
+                            </span>
+                        </Button>
                     </Card>
                 </motion.div>
             </Link>
